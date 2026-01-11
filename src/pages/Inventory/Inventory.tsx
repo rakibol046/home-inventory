@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchItems } from "../../api/items.api";
-import { useNavigate } from "react-router";
+
 import { useState } from "react";
 import {
   Search,
@@ -145,7 +145,6 @@ const labelColors: Record<string, { bg: string; text: string }> = {
 };
 
 export default function Inventory() {
-  const navigate = useNavigate();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["items"],
     queryFn: fetchItems,
