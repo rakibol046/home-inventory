@@ -1,20 +1,5 @@
 import { NavLink } from "react-router";
-import {
-  Home,
-  MapPin,
-  Tag,
-  BarChart3,
-  Settings,
-  Search,
-  Download,
-  Plus,
-  ChevronDown,
-  MoreHorizontal,
-  MoreVertical,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-} from "lucide-react";
+import { Home, Settings, MoreVertical } from "lucide-react";
 
 type MenuItem = {
   label: string;

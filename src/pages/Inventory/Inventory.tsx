@@ -3,20 +3,13 @@ import { fetchItems } from "../../api/items.api";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import {
-  Home,
-  MapPin,
-  Tag,
-  BarChart3,
-  Settings,
   Search,
   Download,
   Plus,
   ChevronDown,
   MoreHorizontal,
-  MoreVertical,
   ChevronLeft,
   ChevronRight,
-  ChevronUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
