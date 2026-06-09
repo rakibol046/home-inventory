@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Inventory from "../pages/Inventory/Inventory";
+import Items from "../pages/Items/Items";
 import ItemDetails from "../pages/ItemDetails/ItemDetails";
 import Locations from "../pages/Locations/Locations";
 import DashboardLayout from "../components/Layout/DashboardLayout";
@@ -26,8 +26,8 @@ export const AppRoutes = () => (
       }
     >
       <Route path="/" element={<Dashboard />} />
-      <Route path="/inventory" element={<Inventory />} />
-      <Route path="/inventory/:id" element={<ItemDetails />} />
+      <Route path="/items" element={<Items />} />
+      <Route path="/items/:id" element={<ItemDetails />} />
       <Route path="/locations" element={<Locations />} />
     </Route>
 

@@ -6,13 +6,15 @@ import {
   Search,
   Download,
   Plus,
-  ChevronDown,
   MoreHorizontal,
   ChevronLeft,
   ChevronRight,
+  X,
+  ArrowUpNarrowWide,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router";
 
 const inventoryItems = [
   {
@@ -24,7 +26,7 @@ const inventoryItems = [
     labels: ["Power Tools", "Warranty"],
     quantity: 1,
     updated: "2 days ago",
-    image: "/assets/inventory/dewalt-drill.png",
+    image: "/assets/figma/illustration.png",
   },
   {
     id: 2,
@@ -34,7 +36,7 @@ const inventoryItems = [
     labels: ["Electronics", "Warranty"],
     quantity: 1,
     updated: "1 week ago",
-    image: "/assets/inventory/samsung-tv.png",
+    image: "/assets/figma/demo.webp",
   },
   {
     id: 3,
@@ -144,7 +146,7 @@ const labelColors: Record<string, { bg: string; text: string }> = {
   Furniture: { bg: "#FEF3C7", text: "#B45309" },
 };
 
-export default function Inventory() {
+export default function Items() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["items"],
     queryFn: fetchItems,
@@ -176,7 +178,7 @@ export default function Inventory() {
       <header className="bg-white border-b border-slate-200 px-8 py-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-6">
-            <h2 className="text-2xl font-bold text-slate-900">Inventory</h2>
+            <h2 className="text-2xl font-bold">Items</h2>
             <div className="flex items-center gap-4">
               <div className="relative flex-1 max-w-sm">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -197,7 +199,7 @@ export default function Inventory() {
           <div className="flex items-center gap-3">
             <Button
               variant="outline"
-              className="flex items-center gap-2 border-slate-300 text-slate-600"
+              className="flex items-center gap-2 border-slate-300"
             >
               <Download className="w-4 h-4" />
               <span>Export</span>
@@ -217,24 +219,24 @@ export default function Inventory() {
             <span className="text-sm font-medium text-slate-600">Filters:</span>
             <Button
               variant="outline"
-              className="flex items-center gap-2 bg-blue-50 border-0 text-blue-600 hover:bg-blue-100"
+              className="flex items-center gap-2 bg-blue-50 border-0 text-primary hover:bg-blue-100"
             >
               <span>All Locations</span>
-              <ChevronDown className="w-4 h-4" />
+              <X className="w-4 h-4" />
             </Button>
             <Button
               variant="outline"
-              className="flex items-center gap-2 bg-blue-50 border-0 text-blue-600 hover:bg-blue-100"
+              className="flex items-center gap-2 bg-blue-50 border-0 text-primary hover:bg-blue-100"
             >
               <span>In Stock</span>
-              <ChevronDown className="w-4 h-4" />
+              <X className="w-4 h-4" />
             </Button>
             <Button
               variant="outline"
               className="flex items-center gap-2 border-slate-300"
             >
               <Plus className="w-4 h-4" />
-              <span>Add Filter</span>
+              <span className="text-slate-600">Add Filter</span>
             </Button>
           </div>
 
@@ -244,10 +246,10 @@ export default function Inventory() {
             </span>
             <Button
               variant="outline"
-              className="flex items-center gap-2 border-slate-300"
+              className="flex items-center gap-2 border-slate-300 text-slate-600"
             >
+              <ArrowUpNarrowWide className="w-4 h-4" />
               <span>Sort: Updated</span>
-              <ChevronDown className="w-4 h-4" />
             </Button>
           </div>
         </div>
@@ -308,9 +310,9 @@ export default function Inventory() {
                           />
                         )}
                         <div>
-                          <p className="font-medium text-slate-900">
-                            {item.name}
-                          </p>
+                          <Link to={`/items/${item.id}`}>
+                            <p className="font-medium">{item.name}</p>
+                          </Link>
                           <p className="text-sm text-slate-500">{item.model}</p>
                         </div>
                       </div>
