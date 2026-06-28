@@ -45,21 +45,34 @@ export default function Register() {
   return (
     <div className="min-h-screen flex">
       {/* Left panel */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 to-blue-800 p-12 flex-col justify-between">
-        <div className="flex items-center gap-3">
-          <img src="/assets/figma/logo.png" alt="Logo" className="h-10 w-auto filter brightness-0 invert" />
-          <span className="text-white text-xl font-bold">Home Inventory</span>
+       <div className="hidden lg:flex lg:w-1/2 items-center justify-center relative bg-gradient-to-br from-blue-50 via-indigo-50 to-indigo-100 rounded-lg p-12 min-h-96">
+          {/* Decorative background pattern */}
+          <div className="absolute inset-0 opacity-10 overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-white" />
+          </div>
+
+          {/* Illustration */}
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <img
+              src="/assets/figma/illustration.png"
+              alt="Organize Everything"
+              className="w-full max-w-sm h-auto object-contain mb-8"
+            />
+            <div className="space-y-3">
+              <h2 className="text-2xl font-semibold text-slate-900">
+                Organize Everything
+              </h2>
+              <p className="text-base text-slate-600 max-w-md leading-relaxed">
+                Keep track of your belongings, warranties, and important
+                documents all in one secure place.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="text-white">
-          <h2 className="text-4xl font-bold leading-tight">Track everything you own,<br />from anywhere.</h2>
-          <p className="mt-4 text-blue-200">Create your free account and start organizing your home inventory today.</p>
-        </div>
-        <p className="text-blue-300 text-sm">© 2025 Home Inventory. All rights reserved.</p>
-      </div>
 
       {/* Right panel */}
       <div className="flex-1 flex items-center justify-center p-8">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md bg-white rounded-xl border border-slate-200 shadow-sm p-8">
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-slate-900">Create your account</h1>
             <p className="text-slate-500 mt-1">
