@@ -1,0 +1,37 @@
+from uuid import UUID
+
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.user import User
+
+
+class UserRepository:
+    def __init__(self, db: AsyncSession):
+        self.db = db
+
+    async def get_by_id_raw(self, id: UUID) -> User | None:
+        result = await self.db.execute(select(User).where(User.id == id))
+        return result.scalar_one_or_none()
+
+    async def get_by_email(self, email: str) -> User | None:
+        result = await self.db.execute(select(User).where(User.email == email, User.deleted_at.is_(None)))
+        return result.scalar_one_or_none()
+
+    async def get_by_username(self, username: str) -> User | None:
+        result = await self.db.execute(select(User).where(User.username == username, User.deleted_at.is_(None)))
+        return result.scalar_one_or_none()
+
+    async def create(self, data: dict) -> User:
+        user = User(**data)
+        self.db.add(user)
+        await self.db.commit()
+        await self.db.refresh(user)
+        return user
+
+    async def update(self, user: User, data: dict) -> User:
+        for k, v in data.items():
+            setattr(user, k, v)
+        await self.db.commit()
+        await self.db.refresh(user)
+        return user
